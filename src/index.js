@@ -16,7 +16,10 @@ const PORT = process.env.PORT || 3000;
 // Middlewares
 app.use(helmet());
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' ? ['https://your-domain.com'] : true,
+  origin: process.env.NODE_ENV === 'production' ? [
+    'https://meunutripessoal.vercel.app',
+    'https://meunutripessoal-53jbd4qnl-goncalveses-projects.vercel.app'
+  ] : true,
   credentials: true
 }));
 app.use(morgan('combined'));
@@ -49,9 +52,13 @@ async function startServer() {
     await database.init();
     console.log('✅ Banco de dados inicializado');
 
-    // Inicializar bot do WhatsApp
-    await whatsappBot.init();
-    console.log('✅ Bot do WhatsApp inicializado');
+    // Inicializar bot do WhatsApp apenas se não estiver no Vercel
+    if (process.env.VERCEL !== '1') {
+      await whatsappBot.init();
+      console.log('✅ Bot do WhatsApp inicializado');
+    } else {
+      console.log('⚠️ WhatsApp Bot desabilitado no Vercel (use Railway/Heroku para bot)');
+    }
 
     // Iniciar servidor
     app.listen(PORT, () => {
