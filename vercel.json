@@ -30,5 +30,8 @@
     }
   },
   "regions": ["iad1"],
-  "framework": null
+  "framework": null,
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "installCommand": "npm install"
 }

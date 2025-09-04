@@ -8,7 +8,7 @@
     "dev": "nodemon src/index.js",
     "test": "jest",
     "build": "npm install && npm run build:static",
-    "build:static": "mkdir -p dist && cp -r public/* dist/",
+    "build:static": "mkdir -p dist && cp -r public/* dist/ && echo 'Build completed'",
     "deploy": "git push origin main",
     "setup": "node src/utils/passwordGenerator.js",
     "vercel-build": "npm run build"

@@ -35,6 +35,7 @@ jobs:
           mkdir -p dist
           cp -r public/* dist/
           cp package.json dist/
+          echo "Build completed successfully"
           
       - name: Setup Pages
         uses: actions/configure-pages@v4
