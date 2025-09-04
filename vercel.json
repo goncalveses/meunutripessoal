@@ -9,6 +9,14 @@
   ],
   "routes": [
     {
+      "src": "/admin/(.*)",
+      "dest": "src/index.js"
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "src/index.js"
+    },
+    {
       "src": "/(.*)",
       "dest": "src/index.js"
     }
@@ -20,5 +28,7 @@
     "src/index.js": {
       "maxDuration": 30
     }
-  }
+  },
+  "regions": ["iad1"],
+  "framework": null
 }

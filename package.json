@@ -7,9 +7,11 @@
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
     "test": "jest",
-    "build": "npm install",
+    "build": "npm install && npm run build:static",
+    "build:static": "mkdir -p dist && cp -r public/* dist/",
     "deploy": "git push origin main",
-    "setup": "node src/utils/passwordGenerator.js"
+    "setup": "node src/utils/passwordGenerator.js",
+    "vercel-build": "npm run build"
   },
   "keywords": ["whatsapp", "nutrição", "ia", "calorias", "nutricionista", "gpt4", "multimodal", "meunutripessoal"],
   "author": "Esdras Gonçalves",
