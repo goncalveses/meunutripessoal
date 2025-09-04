@@ -11,11 +11,22 @@ class WhatsAppBot {
   constructor() {
     this.client = new Client({
       authStrategy: new LocalAuth({
-        clientId: process.env.WHATSAPP_SESSION_NAME || 'dieta_bot_session'
+        clientId: process.env.WHATSAPP_SESSION_NAME || 'meu_nutri_pessoal_session'
       }),
       puppeteer: {
         headless: true,
-        args: ['--no-sandbox', '--disable-setuid-sandbox']
+        args: [
+          '--no-sandbox',
+          '--disable-setuid-sandbox',
+          '--disable-dev-shm-usage',
+          '--disable-accelerated-2d-canvas',
+          '--no-first-run',
+          '--no-zygote',
+          '--single-process',
+          '--disable-gpu',
+          '--disable-web-security',
+          '--disable-features=VizDisplayCompositor'
+        ]
       }
     });
 

@@ -1,0 +1,11 @@
+[phases.setup]
+nixPkgs = ["glib", "gobject-introspection", "libgobject-2.0", "libglib-2.0", "libnss3", "libatk-bridge2.0", "libdrm2", "libxcomposite1", "libxdamage1", "libxrandr2", "libgbm1", "libxss1", "libasound2", "libatspi2.0", "libgtk-3", "libgdk-pixbuf2.0"]
+
+[phases.install]
+cmds = ["npm ci --only=production"]
+
+[phases.build]
+cmds = ["npm run build"]
+
+[start]
+cmd = "npm start"

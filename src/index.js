@@ -45,6 +45,16 @@ app.get('/admin.html', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/admin.html'));
 });
 
+// Health check para Railway
+app.get('/health', (req, res) => {
+  res.json({ 
+    status: 'ok', 
+    timestamp: new Date().toISOString(),
+    service: 'Meu Nutri Pessoal',
+    version: '1.0.0'
+  });
+});
+
 // Inicialização
 async function startServer() {
   try {
@@ -52,13 +62,9 @@ async function startServer() {
     await database.init();
     console.log('✅ Banco de dados inicializado');
 
-    // Inicializar bot do WhatsApp apenas se não estiver no Vercel
-    if (process.env.VERCEL !== '1') {
-      await whatsappBot.init();
-      console.log('✅ Bot do WhatsApp inicializado');
-    } else {
-      console.log('⚠️ WhatsApp Bot desabilitado no Vercel (use Railway/Heroku para bot)');
-    }
+    // Inicializar bot do WhatsApp (funciona no Railway)
+    await whatsappBot.init();
+    console.log('✅ Bot do WhatsApp inicializado');
 
     // Iniciar servidor
     app.listen(PORT, () => {
