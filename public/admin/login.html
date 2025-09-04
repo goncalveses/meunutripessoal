@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Administrativo - Dieta Bot</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .login-form {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .pulse-glow {
+            animation: pulse-glow 2s ease-in-out infinite alternate;
+        }
+        @keyframes pulse-glow {
+            from { box-shadow: 0 0 20px rgba(102, 126, 234, 0.3); }
+            to { box-shadow: 0 0 30px rgba(102, 126, 234, 0.6); }
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen flex items-center justify-center p-4">
+    
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-10">
+        <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.1"><circle cx="30" cy="30" r="2"/></g></svg>');"></div>
+    </div>
+
+    <!-- Login Container -->
+    <div class="relative z-10 w-full max-w-md">
+        <!-- Logo -->
+        <div class="text-center mb-8">
+            <div class="floating mb-4">
+                <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto shadow-lg">
+                    <span class="text-3xl">🍽️</span>
+                </div>
+            </div>
+            <h1 class="text-3xl font-bold text-white mb-2">Dieta Bot</h1>
+            <p class="text-white opacity-90">Painel Administrativo</p>
+        </div>
+
+        <!-- Login Form -->
+        <div class="login-form rounded-2xl shadow-2xl p-8">
+            <div class="text-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">Acesso Administrativo</h2>
+                <p class="text-gray-600">Faça login para acessar o dashboard</p>
+            </div>
+
+            <!-- Alert Messages -->
+            <div id="alert-container" class="mb-6"></div>
+
+            <form id="login-form" class="space-y-6">
+                <!-- Username -->
+                <div>
+                    <label for="username" class="block text-sm font-medium text-gray-700 mb-2">
+                        <i class="fas fa-user mr-2"></i>Usuário
+                    </label>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        name="username" 
+                        required 
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                        placeholder="Digite seu usuário"
+                        autocomplete="username"
+                    >
+                </div>
+
+                <!-- Password -->
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700 mb-2">
+                        <i class="fas fa-lock mr-2"></i>Senha
+                    </label>
+                    <div class="relative">
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            required 
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 pr-12"
+                            placeholder="Digite sua senha"
+                            autocomplete="current-password"
+                        >
+                        <button 
+                            type="button" 
+                            onclick="togglePassword()" 
+                            class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                        >
+                            <i id="password-icon" class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Remember Me -->
+                <div class="flex items-center justify-between">
+                    <label class="flex items-center">
+                        <input 
+                            type="checkbox" 
+                            id="remember" 
+                            name="remember" 
+                            class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                        >
+                        <span class="ml-2 text-sm text-gray-700">Lembrar de mim</span>
+                    </label>
+                    <a href="#" onclick="showForgotPassword()" class="text-sm text-blue-600 hover:text-blue-800">
+                        Esqueceu a senha?
+                    </a>
+                </div>
+
+                <!-- Login Button -->
+                <button 
+                    type="submit" 
+                    id="login-btn"
+                    class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition duration-200 pulse-glow flex items-center justify-center"
+                >
+                    <i class="fas fa-sign-in-alt mr-2"></i>
+                    <span id="login-text">Entrar</span>
+                    <i id="login-spinner" class="fas fa-spinner fa-spin ml-2 hidden"></i>
+                </button>
+            </form>
+
+            <!-- Security Notice -->
+            <div class="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                <div class="flex items-start">
+                    <i class="fas fa-shield-alt text-yellow-600 mt-1 mr-3"></i>
+                    <div>
+                        <h4 class="text-sm font-medium text-yellow-800">Aviso de Segurança</h4>
+                        <p class="text-xs text-yellow-700 mt-1">
+                            Este é um painel administrativo restrito. Todas as atividades são monitoradas e registradas.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo Credentials -->
+            <div class="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                <div class="flex items-start">
+                    <i class="fas fa-info-circle text-blue-600 mt-1 mr-3"></i>
+                    <div>
+                        <h4 class="text-sm font-medium text-blue-800">Credenciais de Demo</h4>
+                        <p class="text-xs text-blue-700 mt-1">
+                            <strong>Admin:</strong> admin / admin123<br>
+                            <strong>Moderador:</strong> moderator / mod123
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center mt-8">
+            <p class="text-white opacity-75 text-sm">
+                © 2024 Dieta Bot. Todos os direitos reservados.
+            </p>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        let loginAttempts = 0;
+        const maxAttempts = 5;
+
+        // Form submission
+        document.getElementById('login-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const remember = document.getElementById('remember').checked;
+            
+            // Check rate limiting
+            if (loginAttempts >= maxAttempts) {
+                showAlert('Muitas tentativas de login. Tente novamente em 15 minutos.', 'error');
+                return;
+            }
+            
+            // Show loading state
+            setLoadingState(true);
+            
+            try {
+                const response = await fetch('/api/admin/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ username, password, remember })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    // Store token
+                    if (remember) {
+                        localStorage.setItem('adminToken', data.token);
+                    } else {
+                        sessionStorage.setItem('adminToken', data.token);
+                    }
+                    
+                    showAlert('Login realizado com sucesso! Redirecionando...', 'success');
+                    
+                    // Redirect to admin dashboard
+                    setTimeout(() => {
+                        window.location.href = '/admin.html';
+                    }, 1500);
+                    
+                } else {
+                    loginAttempts++;
+                    showAlert(data.error || 'Erro ao fazer login', 'error');
+                }
+                
+            } catch (error) {
+                console.error('Login error:', error);
+                showAlert('Erro de conexão. Tente novamente.', 'error');
+            } finally {
+                setLoadingState(false);
+            }
+        });
+
+        // Toggle password visibility
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const passwordIcon = document.getElementById('password-icon');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                passwordIcon.className = 'fas fa-eye-slash';
+            } else {
+                passwordInput.type = 'password';
+                passwordIcon.className = 'fas fa-eye';
+            }
+        }
+
+        // Show loading state
+        function setLoadingState(loading) {
+            const loginBtn = document.getElementById('login-btn');
+            const loginText = document.getElementById('login-text');
+            const loginSpinner = document.getElementById('login-spinner');
+            
+            if (loading) {
+                loginBtn.disabled = true;
+                loginBtn.classList.add('opacity-75', 'cursor-not-allowed');
+                loginText.textContent = 'Entrando...';
+                loginSpinner.classList.remove('hidden');
+            } else {
+                loginBtn.disabled = false;
+                loginBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+                loginText.textContent = 'Entrar';
+                loginSpinner.classList.add('hidden');
+            }
+        }
+
+        // Show alert message
+        function showAlert(message, type = 'info') {
+            const alertContainer = document.getElementById('alert-container');
+            
+            const alertClass = {
+                'success': 'bg-green-100 border-green-400 text-green-700',
+                'error': 'bg-red-100 border-red-400 text-red-700',
+                'warning': 'bg-yellow-100 border-yellow-400 text-yellow-700',
+                'info': 'bg-blue-100 border-blue-400 text-blue-700'
+            };
+            
+            const iconClass = {
+                'success': 'fas fa-check-circle',
+                'error': 'fas fa-exclamation-circle',
+                'warning': 'fas fa-exclamation-triangle',
+                'info': 'fas fa-info-circle'
+            };
+            
+            const alert = document.createElement('div');
+            alert.className = `border-l-4 p-4 rounded ${alertClass[type]}`;
+            alert.innerHTML = `
+                <div class="flex items-center">
+                    <i class="${iconClass[type]} mr-3"></i>
+                    <span class="text-sm font-medium">${message}</span>
+                </div>
+            `;
+            
+            alertContainer.innerHTML = '';
+            alertContainer.appendChild(alert);
+            
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                if (alert.parentNode) {
+                    alert.parentNode.removeChild(alert);
+                }
+            }, 5000);
+        }
+
+        // Show forgot password modal
+        function showForgotPassword() {
+            const email = prompt('Digite seu email para recuperação de senha:');
+            if (email) {
+                showAlert('Instruções de recuperação enviadas para seu email.', 'info');
+            }
+        }
+
+        // Check if already logged in
+        function checkExistingLogin() {
+            const token = localStorage.getItem('adminToken') || sessionStorage.getItem('adminToken');
+            if (token) {
+                // Verify token
+                fetch('/api/admin/verify', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        window.location.href = '/admin.html';
+                    }
+                })
+                .catch(error => {
+                    console.error('Token verification failed:', error);
+                    localStorage.removeItem('adminToken');
+                    sessionStorage.removeItem('adminToken');
+                });
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            checkExistingLogin();
+            
+            // Focus on username field
+            document.getElementById('username').focus();
+            
+            // Add enter key support
+            document.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    document.getElementById('login-form').dispatchEvent(new Event('submit'));
+                }
+            });
+        });
+
+        // Security: Prevent right-click and F12
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.addEventListener('keydown', e => {
+            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
+                e.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>

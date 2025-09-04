@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Nutri Pessoal - Seu Nutricionista Pessoal 24/7 no WhatsApp</title>
+    <meta name="description" content="Envie uma foto da sua refeição e receba análise completa em segundos. IA revolucionária que entende sua voz e monta sua dieta personalizada.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Meu Nutri Pessoal - Seu Nutricionista Pessoal 24/7">
+    <meta property="og:description" content="IA revolucionária que analisa suas refeições e monta dietas personalizadas via WhatsApp">
+    <meta property="og:image" content="https://meunutripessoal.com/images/og-image.jpg">
+    <meta property="og:url" content="https://meunutripessoal.com">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom CSS -->
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        .pulse-glow {
+            animation: pulse-glow 2s ease-in-out infinite alternate;
+        }
+        @keyframes pulse-glow {
+            from { box-shadow: 0 0 20px rgba(102, 126, 234, 0.5); }
+            to { box-shadow: 0 0 30px rgba(102, 126, 234, 0.8); }
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+</head>
+<body class="font-inter bg-gray-50">
+    
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <h1 class="text-2xl font-bold gradient-text">🍽️ Meu Nutri Pessoal</h1>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#features" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Recursos</a>
+                        <a href="#pricing" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Preços</a>
+                        <a href="#testimonials" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Depoimentos</a>
+                        <button onclick="openWhatsApp()" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition duration-300">
+                            🚀 Começar Grátis
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg pt-20 pb-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
+                    Seu Nutricionista Pessoal<br>
+                    <span class="text-yellow-300">24/7 no WhatsApp</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-100 mb-8 max-w-3xl mx-auto">
+                    🤖 Envie uma foto da sua refeição e receba análise completa em segundos<br>
+                    🎤 IA revolucionária que entende sua voz e monta sua dieta personalizada
+                </p>
+                
+                <!-- Demo Video/Image -->
+                <div class="mb-8">
+                    <div class="bg-white rounded-2xl p-8 shadow-2xl max-w-2xl mx-auto">
+                        <div class="bg-gray-100 rounded-lg p-4 mb-4">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <div class="floating mb-4">
+                                <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto">
+                                    <span class="text-2xl">📱</span>
+                                </div>
+                            </div>
+                            <h3 class="text-lg font-semibold text-gray-800 mb-2">Demo Interativo</h3>
+                            <p class="text-gray-600 mb-4">Teste o bot agora mesmo!</p>
+                            <button onclick="testBot()" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-medium transition duration-300">
+                                🧪 Testar Análise
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <button onclick="openWhatsApp()" class="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-xl text-lg font-bold transition duration-300 pulse-glow">
+                        📱 Chamar no WhatsApp
+                    </button>
+                    <button onclick="scrollToPricing()" class="bg-white hover:bg-gray-100 text-blue-600 px-8 py-4 rounded-xl text-lg font-bold transition duration-300">
+                        💎 Ver Planos
+                    </button>
+                </div>
+
+                <!-- Trust Indicators -->
+                <div class="mt-12 flex flex-wrap justify-center items-center gap-8 text-white">
+                    <div class="text-center">
+                        <div class="text-3xl font-bold">10.000+</div>
+                        <div class="text-sm">Usuários Ativos</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold">50.000+</div>
+                        <div class="text-sm">Análises Realizadas</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold">4.9★</div>
+                        <div class="text-sm">Avaliação Média</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold">24/7</div>
+                        <div class="text-sm">Disponível</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Recursos Revolucionários</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Tecnologia de ponta que transforma seu WhatsApp em um nutricionista pessoal
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition duration-300">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                        <span class="text-2xl">📸</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Análise de Fotos</h3>
+                    <p class="text-gray-600 mb-4">
+                        Envie uma foto da sua refeição e receba análise completa com calorias, nutrientes e dicas personalizadas.
+                    </p>
+                    <div class="bg-blue-50 rounded-lg p-3">
+                        <p class="text-sm text-blue-800 font-medium">✨ Identifica 100+ alimentos</p>
+                    </div>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition duration-300">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
+                        <span class="text-2xl">🎤</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Comandos de Voz</h3>
+                    <p class="text-gray-600 mb-4">
+                        Fale naturalmente com o bot: "Quero emagrecer 5kg" e receba uma dieta personalizada.
+                    </p>
+                    <div class="bg-green-50 rounded-lg p-3">
+                        <p class="text-sm text-green-800 font-medium">🎯 Compreende português natural</p>
+                    </div>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition duration-300">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-6">
+                        <span class="text-2xl">🤖</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">IA Multimodal</h3>
+                    <p class="text-gray-600 mb-4">
+                        Combina análise de imagens, processamento de voz e chat inteligente para uma experiência única.
+                    </p>
+                    <div class="bg-purple-50 rounded-lg p-3">
+                        <p class="text-sm text-purple-800 font-medium">🧠 GPT-4 + Whisper + Vision</p>
+                    </div>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition duration-300">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mb-6">
+                        <span class="text-2xl">🥗</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Dietas Personalizadas</h3>
+                    <p class="text-gray-600 mb-4">
+                        Receba planos alimentares únicos baseados no seu perfil, objetivos e preferências.
+                    </p>
+                    <div class="bg-yellow-50 rounded-lg p-3">
+                        <p class="text-sm text-yellow-800 font-medium">🎯 Adapta-se ao seu estilo de vida</p>
+                    </div>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition duration-300">
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mb-6">
+                        <span class="text-2xl">📊</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Analytics Avançados</h3>
+                    <p class="text-gray-600 mb-4">
+                        Acompanhe seu progresso com relatórios detalhados, gráficos e insights personalizados.
+                    </p>
+                    <div class="bg-red-50 rounded-lg p-3">
+                        <p class="text-sm text-red-800 font-medium">📈 Relatórios semanais automáticos</p>
+                    </div>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition duration-300">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-6">
+                        <span class="text-2xl">🏆</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Gamificação</h3>
+                    <p class="text-gray-600 mb-4">
+                        Ganhe pontos, badges e participe de desafios para manter a motivação alta.
+                    </p>
+                    <div class="bg-indigo-50 rounded-lg p-3">
+                        <p class="text-sm text-indigo-800 font-medium">🎮 Desafios com amigos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Voice Commands Demo -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Comandos de Voz Revolucionários</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Fale naturalmente e o bot entende exatamente o que você precisa
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="space-y-4">
+                    <div class="bg-white rounded-lg p-6 shadow-md">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <div class="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+                            <span class="text-sm text-gray-500">Comando de voz</span>
+                        </div>
+                        <p class="text-lg font-medium text-gray-800">"Quero emagrecer 10kg em 3 meses"</p>
+                        <div class="mt-3 text-sm text-gray-600">
+                            → Gera dieta personalizada para perda de peso
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg p-6 shadow-md">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <div class="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+                            <span class="text-sm text-gray-500">Comando de voz</span>
+                        </div>
+                        <p class="text-lg font-medium text-gray-800">"Estou com fome, o que posso comer?"</p>
+                        <div class="mt-3 text-sm text-gray-600">
+                            → Sugere lanches saudáveis baseados no seu perfil
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg p-6 shadow-md">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <div class="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+                            <span class="text-sm text-gray-500">Comando de voz</span>
+                        </div>
+                        <p class="text-lg font-medium text-gray-800">"Gere um cardápio para esta semana"</p>
+                        <div class="mt-3 text-sm text-gray-600">
+                            → Cria menu completo com receitas
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="bg-white rounded-lg p-6 shadow-md">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <div class="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+                            <span class="text-sm text-gray-500">Comando de voz</span>
+                        </div>
+                        <p class="text-lg font-medium text-gray-800">"Quanto gastei com comida este mês?"</p>
+                        <div class="mt-3 text-sm text-gray-600">
+                            → Relatório financeiro detalhado
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg p-6 shadow-md">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <div class="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+                            <span class="text-sm text-gray-500">Comando de voz</span>
+                        </div>
+                        <p class="text-lg font-medium text-gray-800">"Me lembre de beber água"</p>
+                        <div class="mt-3 text-sm text-gray-600">
+                            → Configura notificações personalizadas
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg p-6 shadow-md">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <div class="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+                            <span class="text-sm text-gray-500">Comando de voz</span>
+                        </div>
+                        <p class="text-lg font-medium text-gray-800">"Convide meu amigo João"</p>
+                        <div class="mt-3 text-sm text-gray-600">
+                            → Sistema de referência automático
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <button onclick="testVoiceCommands()" class="bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-xl text-lg font-bold transition duration-300">
+                    🎤 Testar Comandos de Voz
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Planos Inovadores</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Escolha o plano ideal para seus objetivos. Todos incluem acesso ao bot via WhatsApp.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Free Plan -->
+                <div class="bg-gray-50 rounded-2xl p-8 border-2 border-gray-200">
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">🆓 Gratuito</h3>
+                        <div class="text-4xl font-bold text-gray-900 mb-4">R$ 0</div>
+                        <p class="text-gray-600 mb-6">Para começar sua jornada</p>
+                        
+                        <ul class="space-y-3 mb-8 text-left">
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-3">✅</span>
+                                3 análises por dia
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-3">✅</span>
+                                Dicas básicas de nutrição
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-3">✅</span>
+                                Comandos de voz limitados
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-3">✅</span>
+                                Suporte por WhatsApp
+                            </li>
+                        </ul>
+                        
+                        <button onclick="openWhatsApp()" class="w-full bg-gray-500 hover:bg-gray-600 text-white py-3 rounded-lg font-medium transition duration-300">
+                            Começar Grátis
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Premium Plan -->
+                <div class="bg-blue-50 rounded-2xl p-8 border-2 border-blue-500 relative">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                        <span class="bg-blue-500 text-white px-4 py-1 rounded-full text-sm font-medium">Mais Popular</span>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">🥈 Premium</h3>
+                        <div class="text-4xl font-bold text-gray-900 mb-2">R$ 29,90</div>
+                        <div class="text-sm text-gray-600 mb-6">por mês</div>
+                        
+                        <ul class="space-y-3 mb-8 text-left">
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-3">✅</span>
+                                Análises ilimitadas
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-3">✅</span>
+                                Dietas personalizadas
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-3">✅</span>
+                                Comandos de voz completos
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-3">✅</span>
+                                Relatórios semanais
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-3">✅</span>
+                                Suporte prioritário
+                            </li>
+                        </ul>
+                        
+                        <button onclick="subscribePlan('premium')" class="w-full bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-lg font-medium transition duration-300">
+                            Assinar Premium
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Pro Plan -->
+                <div class="bg-purple-50 rounded-2xl p-8 border-2 border-purple-500">
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">🥇 Pro</h3>
+                        <div class="text-4xl font-bold text-gray-900 mb-2">R$ 59,90</div>
+                        <div class="text-sm text-gray-600 mb-6">por mês</div>
+                        
+                        <ul class="space-y-3 mb-8 text-left">
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-3">✅</span>
+                                Tudo do Premium
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-3">✅</span>
+                                Coaching nutricional 24/7
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-3">✅</span>
+                                Metas personalizadas
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-3">✅</span>
+                                Analytics avançados
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-3">✅</span>
+                                Gamificação completa
+                            </li>
+                        </ul>
+                        
+                        <button onclick="subscribePlan('pro')" class="w-full bg-purple-500 hover:bg-purple-600 text-white py-3 rounded-lg font-medium transition duration-300">
+                            Assinar Pro
+                        </button>
+                    </div>
+                </div>
+
+                <!-- VIP Plan -->
+                <div class="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-2xl p-8 border-2 border-yellow-500">
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">💎 VIP</h3>
+                        <div class="text-4xl font-bold text-gray-900 mb-2">R$ 99,90</div>
+                        <div class="text-sm text-gray-600 mb-6">por mês</div>
+                        
+                        <ul class="space-y-3 mb-8 text-left">
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-3">✅</span>
+                                Tudo do Pro
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-3">✅</span>
+                                Consultoria 1:1 mensal
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-3">✅</span>
+                                Receitas exclusivas
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-3">✅</span>
+                                Suporte VIP 24/7
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-3">✅</span>
+                                Acesso antecipado a features
+                            </li>
+                        </ul>
+                        
+                        <button onclick="subscribePlan('vip')" class="w-full bg-yellow-500 hover:bg-yellow-600 text-white py-3 rounded-lg font-medium transition duration-300">
+                            Assinar VIP
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Annual Discount -->
+            <div class="text-center mt-12">
+                <div class="bg-green-50 border-2 border-green-200 rounded-2xl p-8 max-w-2xl mx-auto">
+                    <h3 class="text-2xl font-bold text-green-800 mb-4">🎁 Desconto Anual</h3>
+                    <p class="text-lg text-green-700 mb-4">
+                        Economize 2 meses pagando anualmente!
+                    </p>
+                    <div class="flex justify-center space-x-8">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-green-800">Premium</div>
+                            <div class="text-xl text-green-600">R$ 299/ano</div>
+                            <div class="text-sm text-green-500">(R$ 24,90/mês)</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-green-800">Pro</div>
+                            <div class="text-xl text-green-600">R$ 599/ano</div>
+                            <div class="text-sm text-green-500">(R$ 49,90/mês)</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-green-800">VIP</div>
+                            <div class="text-xl text-green-600">R$ 999/ano</div>
+                            <div class="text-sm text-green-500">(R$ 83,25/mês)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Depoimentos Reais</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Veja o que nossos usuários estão falando sobre o Meu Nutri Pessoal
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">
+                            M
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold text-gray-900">Maria Silva</h4>
+                            <p class="text-sm text-gray-600">Emagreceu 8kg em 2 meses</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">
+                        "Incrível! O bot entende exatamente o que preciso. Perdi 8kg em 2 meses seguindo as dietas personalizadas. É como ter um nutricionista no bolso!"
+                    </p>
+                    <div class="flex text-yellow-400">
+                        ⭐⭐⭐⭐⭐
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white font-bold">
+                            J
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold text-gray-900">João Santos</h4>
+                            <p class="text-sm text-gray-600">Ganhou 5kg de massa muscular</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">
+                        "Os comandos de voz são fantásticos! Falo 'quero ganhar massa' e ele monta toda a dieta. Ganhei 5kg de massa muscular em 3 meses."
+                    </p>
+                    <div class="flex text-yellow-400">
+                        ⭐⭐⭐⭐⭐
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold">
+                            A
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold text-gray-900">Ana Costa</h4>
+                            <p class="text-sm text-gray-600">Controlou diabetes tipo 2</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">
+                        "O bot me ajudou a controlar meu diabetes. As análises são super precisas e as dicas personalizadas fizeram toda a diferença na minha saúde."
+                    </p>
+                    <div class="flex text-yellow-400">
+                        ⭐⭐⭐⭐⭐
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="gradient-bg py-20">
+        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+                Pronto para Transformar sua Alimentação?
+            </h2>
+            <p class="text-xl text-gray-100 mb-8">
+                Junte-se a mais de 10.000 pessoas que já transformaram sua vida com o Meu Nutri Pessoal
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <button onclick="openWhatsApp()" class="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-xl text-lg font-bold transition duration-300 pulse-glow">
+                    🚀 Começar Agora - Grátis
+                </button>
+                <button onclick="scrollToPricing()" class="bg-white hover:bg-gray-100 text-blue-600 px-8 py-4 rounded-xl text-lg font-bold transition duration-300">
+                    💎 Ver Planos Premium
+                </button>
+            </div>
+
+            <div class="mt-8 text-gray-200">
+                <p class="text-sm">✅ Sem compromisso • ✅ Cancele quando quiser • ✅ Suporte 24/7</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold gradient-text mb-4">🍽️ Meu Nutri Pessoal</h3>
+                    <p class="text-gray-400 mb-4">
+                        Seu nutricionista pessoal 24/7 no WhatsApp. IA revolucionária para uma vida mais saudável.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">📱</a>
+                        <a href="#" class="text-gray-400 hover:text-white">📧</a>
+                        <a href="#" class="text-gray-400 hover:text-white">🐦</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">Recursos</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Análise de Fotos</a></li>
+                        <li><a href="#" class="hover:text-white">Comandos de Voz</a></li>
+                        <li><a href="#" class="hover:text-white">Dietas Personalizadas</a></li>
+                        <li><a href="#" class="hover:text-white">Analytics</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">Suporte</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Central de Ajuda</a></li>
+                        <li><a href="#" class="hover:text-white">Contato</a></li>
+                        <li><a href="#" class="hover:text-white">FAQ</a></li>
+                        <li><a href="#" class="hover:text-white">Status</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">Legal</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Termos de Uso</a></li>
+                        <li><a href="#" class="hover:text-white">Privacidade</a></li>
+                        <li><a href="#" class="hover:text-white">LGPD</a></li>
+                        <li><a href="#" class="hover:text-white">Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Meu Nutri Pessoal. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // WhatsApp Integration
+        function openWhatsApp() {
+            const phoneNumber = '+5511999999999'; // Substitua pelo seu número
+            const message = 'Oi! Quero começar com o Meu Nutri Pessoal! 🚀';
+            const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+            
+            // Analytics
+            gtag('event', 'whatsapp_click', {
+                'event_category': 'engagement',
+                'event_label': 'hero_cta'
+            });
+        }
+
+        // Smooth scrolling
+        function scrollToPricing() {
+            document.getElementById('pricing').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Test Bot Function
+        function testBot() {
+            // Simular teste do bot
+            alert('🧪 Teste do Bot!\n\nEnvie uma foto de comida para o WhatsApp e veja a mágica acontecer!');
+        }
+
+        // Test Voice Commands
+        function testVoiceCommands() {
+            const commands = [
+                '"Quero emagrecer 10kg em 3 meses"',
+                '"Estou com fome, o que posso comer?"',
+                '"Gere um cardápio para esta semana"',
+                '"Quanto gastei com comida este mês?"',
+                '"Me lembre de beber água"',
+                '"Convide meu amigo João"'
+            ];
+            
+            alert('🎤 Comandos de Voz Disponíveis:\n\n' + commands.join('\n\n') + '\n\nFale qualquer um desses comandos no WhatsApp!');
+        }
+
+        // Subscription Plans
+        function subscribePlan(plan) {
+            const plans = {
+                premium: { name: 'Premium', price: 'R$ 29,90', annual: 'R$ 299' },
+                pro: { name: 'Pro', price: 'R$ 59,90', annual: 'R$ 599' },
+                vip: { name: 'VIP', price: 'R$ 99,90', annual: 'R$ 999' }
+            };
+            
+            const selectedPlan = plans[plan];
+            const message = `Quero assinar o plano ${selectedPlan.name}!\n\nMensal: ${selectedPlan.price}\nAnual: ${selectedPlan.annual} (2 meses grátis)`;
+            
+            const phoneNumber = '+5511999999999';
+            const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+            
+            // Analytics
+            gtag('event', 'subscription_click', {
+                'event_category': 'conversion',
+                'event_label': plan
+            });
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Add CSS for animations
+        const style = document.createElement('style');
+        style.textContent = `
+            .animate-fade-in {
+                animation: fadeIn 0.6s ease-in-out;
+            }
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
