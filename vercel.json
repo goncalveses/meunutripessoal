@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "name": "meu-nutri-pessoal",
   "builds": [
     {
       "src": "src/index.js",
@@ -23,11 +22,6 @@
   ],
   "env": {
     "NODE_ENV": "production"
-  },
-  "functions": {
-    "src/index.js": {
-      "maxDuration": 30
-    }
   },
   "regions": ["iad1"],
   "framework": null,
